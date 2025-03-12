@@ -1,37 +1,67 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) {
-        StudentManager manager = new StudentManager();
 
-        Set<String> courses1 = new HashSet<>(Arrays.asList("Java Programming", "Data Structures"));
-        Student s1 = new Student(1, "Alice Johnson", 20, courses1);
 
-        Set<String> courses2 = new HashSet<>(Arrays.asList("Python Programming", "Algorithms"));
-        Student s2 = new Student(2, "Bob Smith", 22, courses2);
-
-        Set<String> courses3 = new HashSet<>(Arrays.asList("Java Programming", "Operating Systems"));
-        Student s3 = new Student(3, "Charlie Davis", 21, courses3);
-
-        manager.addStudent(s1);
-        manager.addStudent(s2);
-        manager.addStudent(s3);
-        manager.displayStudentsSortedById();
-
-        Student foundStudent = manager.searchStudentById(2);
-        if (foundStudent != null) {
-            System.out.println(foundStudent);
-        } else {
-            System.out.println("Student not found.");
+public class Main { 
+    public static <T> List<T> mergeLists(List<T> l1, List<T> l2) {
+        List<T> res = new ArrayList<>();
+        int i = 0, j = 0;
+        while (i < l1.size() || j < l2.size()) {
+            if (i < l1.size()) {
+                res.add(l1.get(i));
+                i++;
+            }
+            if (j < l2.size()) {
+                res.add(l2.get(j));
+                j++;
+            }
         }
-        manager.listStudentsByCourse("Java Programming");
-        Set<String> newCourses = new HashSet<>(Arrays.asList("Advanced Java", "Data Structures"));
-        manager.updateStudent(1, "Alice Johnson Updated", 21, newCourses);
-        manager.displayStudentsSortedByName();
-        manager.listStudentsByCourse("Data Structures");
-        manager.removeStudent(2);
-        manager.displayStudentsSortedById();
+        return res;
     }
-}
+
+    public static <K, V> void printMap(Map<K, V> map) {
+        for (Map.Entry<K, V> e : map.entrySet())
+            System.out.println(e.getKey() + " = " + e.getValue());
+    }
+
+
+        public static void main(String[] args){
+                List<Task> tasks=new ArrayList<>();
+                TaskManager sch=new TaskManager();
+
+                tasks.add(new Task("Code Review",3,20));
+                tasks.add(new Task("System Update",5,45));
+                tasks.add(new Task("Database Backup",2,30));
+                tasks.add(new Task("Deploy New Feature",5,50));
+                tasks.add(new Task("Bug Fixing",4,25));
+
+
+                System.out.println("Tasks Added:");
+
+                for(Task t:tasks)System.out.println(t);;
+
+
+                for(Task t:tasks)sch.addTask(t);
+
+                sch.printScheduledTasks();
+                sch.processTasks();
+                sch.delayAndPrintTask("Code Review");
+                sch.printScheduledTasks();
+                sch.printPendingTasks();
+                sch.delayAndPrintTask("Deploy New Feature");
+                sch.printScheduledTasks();
+                sch.printPendingTasks();
+                sch.processTasks();
+                sch.printScheduledTasks();
+                sch.printPendingTasks();
+                sch.processTasks();
+                sch.printScheduledTasks();
+                sch.printPendingTasks();
+                sch.processPendingTasks();
+                sch.printScheduledTasks();
+                sch.printPendingTasks();
+                sch.processPendingTasks();
+                sch.printScheduledTasks();
+                sch.printPendingTasks();
+        }
+      }
